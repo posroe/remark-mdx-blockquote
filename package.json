@@ -1,6 +1,6 @@
 {
     "name": "remark-mdx-blockquote",
-    "version": "1.0.1",
+    "version": "1.0.0",
     "type": "module",
     "exports": {
         ".": {
