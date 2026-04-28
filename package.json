@@ -1,7 +1,7 @@
 {
     "name": "remark-mdx-blockquote",
     "version": "1.0.1",
-    "description": "A remark plugin that transforms GitHub-style blockquote alerts into blockquote nodes with a data-callout attribute.",
+    "description": "A remark plugin that converts GitHub-style alert blockquotes (e.g. > [!NOTE]) into <blockquote> elements with a data-callout attribute.",
     "type": "module",
     "exports": {
         ".": {

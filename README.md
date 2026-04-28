@@ -3,7 +3,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![npm version](https://badge.fury.io/js/remark-mdx-blockquote.svg)](https://www.npmjs.com/package/remark-mdx-blockquote)
 [![npm downloads](https://img.shields.io/npm/dt/remark-mdx-blockquote)](https://www.npmjs.com/package/remark-mdx-blockquote)
-[![Publish](https://github.com/posroe/remark-mdx-blockquote/actions/workflows/publish.yml/badge.svg)](https://github.com/posroe/remark-mdx-blockquote/actions/workflows/publish.yml)
 
 A [remark](https://github.com/remarkjs/remark) plugin that transforms GitHub-style blockquote alerts into blockquote nodes with a `data-callout` attribute. Plain `>` blockquotes are left untouched. Inspired by [GitHub's blockquote alerts](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts).
 
