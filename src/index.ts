@@ -2,10 +2,10 @@ import { visit } from "unist-util-visit";
 import type { Root, Blockquote, Paragraph, Text } from "mdast";
 import type { Plugin } from "unified";
 
-export type AlertType = "NOTE" | "TIP" | "IMPORTANT" | "WARNING" | "CAUTION";
+export type CalloutType = "NOTE" | "TIP" | "IMPORTANT" | "WARNING" | "CAUTION";
 
 export type BlockquoteAttributes<Custom extends string = never> = {
-    "data-callout": AlertType | Custom;
+    "data-callout": CalloutType | Custom;
 };
 
 export interface RemarkMdxBlockquoteOptions {
@@ -15,7 +15,7 @@ export interface RemarkMdxBlockquoteOptions {
     removeMarker?: boolean;
 }
 
-const DEFAULT_ALERT_TYPES: Record<AlertType, string> = {
+const DEFAULT_CALLOUT_TYPES: Record<CalloutType, CalloutType> = {
     NOTE: "NOTE",
     TIP: "TIP",
     IMPORTANT: "IMPORTANT",
@@ -23,9 +23,9 @@ const DEFAULT_ALERT_TYPES: Record<AlertType, string> = {
     CAUTION: "CAUTION",
 };
 
-const ALERT_MARKER_RE = /^\s*\[!([A-Z0-9_-]+)\]\s*$/i;
+const CALLOUT_MARKER_RE = /^\s*\[!([A-Z0-9_-]+)\]\s*$/i;
 
-function extractAlertType(
+function extractCalloutType(
     node: Blockquote,
     knownTypes: Record<string, string>
 ): { type: string } | null {
@@ -37,7 +37,7 @@ function extractAlertType(
     if (!firstInline || firstInline.type !== "text") return null;
 
     const firstLine = (firstInline as Text).value.split("\n")[0];
-    const match = ALERT_MARKER_RE.exec(firstLine);
+    const match = CALLOUT_MARKER_RE.exec(firstLine);
     if (!match) return null;
 
     const resolved = knownTypes[match[1].toUpperCase()];
@@ -64,11 +64,11 @@ const remarkMdxBlockquote: Plugin<[RemarkMdxBlockquoteOptions?], Root> = (
     options = {}
 ) => {
     const { customTypes = {}, removeMarker = true } = options;
-    const knownTypes = { ...DEFAULT_ALERT_TYPES, ...customTypes };
+    const knownTypes = { ...DEFAULT_CALLOUT_TYPES, ...customTypes };
 
     return (tree: Root) => {
         visit(tree, "blockquote", (node: Blockquote) => {
-            const result = extractAlertType(node, knownTypes);
+            const result = extractCalloutType(node, knownTypes);
             if (!result) return;
 
             node.data = node.data ?? {};
@@ -84,4 +84,3 @@ const remarkMdxBlockquote: Plugin<[RemarkMdxBlockquoteOptions?], Root> = (
 };
 
 export default remarkMdxBlockquote;
-export { remarkMdxBlockquote };
