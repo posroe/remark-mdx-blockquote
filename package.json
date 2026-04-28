@@ -9,11 +9,11 @@
         "dist"
     ],
     "scripts": {
-        "build": "tsup src/index.ts",
-        "dev": "tsup src/index.ts --watch",
+        "build": "tsup",
+        "dev": "tsup --watch",
         "test": "vitest run",
         "test:watch": "vitest",
-        "prepublishOnly": "tsup src/index.ts"
+        "prepublishOnly": "tsup"
     },
     "devDependencies": {
         "@types/mdast": "^4.0.4",
