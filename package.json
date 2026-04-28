@@ -18,7 +18,7 @@
         "dev": "tsup --watch",
         "test": "vitest run",
         "test:watch": "vitest",
-        "prepublishOnly": "tsup"
+        "prepublishOnly": "bun run build"
     },
     "devDependencies": {
         "@types/mdast": "^4.0.4",
