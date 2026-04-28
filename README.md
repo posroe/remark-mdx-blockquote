@@ -18,7 +18,7 @@ A [remark](https://github.com/remarkjs/remark) plugin that transforms GitHub-sty
 </blockquote>
 ```
 
-## Install
+## Installation
 
 ```bash
 npm install remark-mdx-blockquote
